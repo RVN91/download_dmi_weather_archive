@@ -3,7 +3,12 @@
 Reads and stores data from DMI's weather archive:
 https://www.dmi.dk/vejrarkiv/
 
-They will never catch me!
+LEGAL DISCLAIMER:
+
+This script is for educational use and the 
+original author does not take responsibility 
+for any illegal use of this script. You shall 
+not use this script for any illegal purposes!
 
 @author: Rasmus Vest Nielsen
 """
@@ -15,16 +20,18 @@ import time
 import datetime
 import locale
 
-# Define date range
-locale.setlocale(locale.LC_ALL, 'dan_DNK') # Months in danish
+# Define date range.
+locale.setlocale(locale.LC_ALL, 'dan_DNK') # Months are in danish.
 start_dates = pd.date_range(start = '2011-01-01', end  = '2011-03-29', 
                             freq = 'D')
 end_dates   = start_dates + datetime.timedelta(days = 1)
 
 locations = ['Thisted', 'Viborg'] #'Aalborg', 
 
-sleep_int  = 15 # Number of records in between sleep is activated
-sleep_time = 5  # Time in seconds
+# Define sleep timers to avoid down throttling,
+# ip bans, and other nasty stuff.  
+sleep_int  = 15 # Number of records in between sleep is activated.
+sleep_time = 5  # Time in seconds.
 
 # Define list of data frames to be concatted later on
 df_list_windspeed = []
@@ -42,7 +49,7 @@ for location in locations:
         
         # Since the timeout for the server is not constant (why not?) 
         # a little fuckery is needed, where the few cases of time outs
-        # are catched and corrected
+        # are catched and corrected.
         try:
             page_windspeed = requests.get('https://www.dmi.dk/dmidk_obsWS/rest/archive/hourly/danmark/wind/{0}/{1}/{2}/{3}'.format(
                 location, end.year, end.strftime("%B").capitalize(), end.day))
