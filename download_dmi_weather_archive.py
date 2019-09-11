@@ -3,6 +3,9 @@
 Reads and stores data from DMI's weather archive:
 https://www.dmi.dk/vejrarkiv/
 
+If modified or used in any projects, please
+refer to the author.
+
 LEGAL DISCLAIMER:
 
 This script is for educational use and the 
